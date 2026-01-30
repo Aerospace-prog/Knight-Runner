@@ -1,73 +1,222 @@
-# Knight Runner
+# 🏃‍♂️ Knight-Runner
 
-## Project Overview  
-Knight Runner is an action-adventure game that immerses players in a dynamic environment where they control a knight on an epic quest. The game combines elements of strategy, puzzle-solving, and combat mechanics, providing an engaging experience for players of all ages.
+> **Knight-Runner** is a 2D platformer game built using **Godot Engine 4.x**, featuring smooth character movement, enemy AI, collectible mechanics, animations, and a centralized game state system.  
+>  
+> This project focuses on **clean architecture, modular scenes, and core game-development fundamentals**.
 
-## Features  
-- **Dynamic Gameplay:** Real-time combat with AI-driven enemies.
-- **Exploration:** Multiple levels with hidden treasures and secret areas.
-- **Customization:** Upgrade your knight with various weapons and armor.
-- **Interactive Environment:** Use the environment to solve puzzles.
+---
 
-## Project Structure  
-```
+## 📌 Highlights (TL;DR)
+
+- 🎮 Physics-based 2D platformer
+- 🧠 Enemy AI with raycast-based patrolling
+- 🪙 Coin collection & real-time score tracking
+- ☠️ Death zones with slow-motion effect & scene reload
+- 🎞️ Animation-driven visual feedback
+- 🔊 Audio cues for interactions
+- 🧩 Clean, modular scene architecture
+
+---
+
+## 📋 Table of Contents
+
+- [Overview](#-overview)
+- [Features](#-features)
+- [Project Structure](#-project-structure)
+- [Core Mechanics](#-core-mechanics)
+- [Installation & Setup](#-installation--setup)
+- [Controls](#-controls)
+- [Architecture & Design](#-architecture--design)
+- [Codebase Analysis](#-codebase-analysis)
+- [Game Objects](#-game-objects)
+- [Technologies](#-technologies)
+- [Known Limitations](#-known-limitations)
+- [Future Enhancements](#-future-enhancements)
+- [License](#-license)
+- [Contributing](#-contributing)
+
+---
+
+## 🎮 Overview
+
+**Knight-Runner** is a side-scrolling 2D platformer where the player controls a knight navigating through levels filled with obstacles, enemy slimes, hazard zones, and collectible coins.
+
+The game demonstrates:
+- Character controllers
+- Collision handling
+- Enemy AI logic
+- Animation state management
+- Centralized score tracking
+- Scene-based architecture
+
+### Sreenshots & Videos
+**#1**
+
+<img width="580" height="327" alt="image" src="https://github.com/user-attachments/assets/07ebd632-ecbe-4c77-a87f-6cb122b2c414" />
+
+---
+
+**#2**
+
+<img width="579" height="331" alt="image" src="https://github.com/user-attachments/assets/f5d51e78-091e-4856-a443-675c99a49c1c" />
+
+
+**#3**
+
+
+https://github.com/user-attachments/assets/688b171d-840e-4087-bd66-9cc555928744
+
+
+---
+
+## ✨ Features
+
+### 🎯 Core Gameplay
+
+- Smooth player movement & jumping
+- Coin collection with animations
+- Enemy AI patrolling using raycasts
+- Death zones with slow-motion effect
+- Centralized score management
+
+---
+
+## 📁 Project Structure
+
+```text
 Knight-Runner/
-│
-├── assets/                   # Game assets including images, sounds, etc.
-│   └──  ...  
-├── src/                      # Source code of the game
-│   ├── game.js               # Main game logic
-│   ├── enemy.js              # Enemy AI behaviors
-│   └── player.js             # Player controls and mechanics
-└── README.md                 # Project documentation
+├── scenes/
+│   ├── player.gd
+│   ├── coin.gd
+│   ├── slime.gd
+│   ├── killzone.gd
+│   └── *.tscn
+├── scripts/
+│   └── game_manager.gd
+├── assets/
+│   ├── sprites/
+│   └── audio/
+├── project.godot
+├── export_presets.cfg
+└── README.md
 ```
 
-## Core Mechanics Analysis  
-- **Combat System:** The game uses a combo-based combat system allowing players to chain attacks and perform special moves.
-- **Enemy AI:** Enemies utilize pathfinding algorithms to navigate the game environment, making encounters challenging.
-- **Puzzle-Solving:** Players need to solve environmental puzzles to unlock new areas and advance in the game.
+---
 
-## Codebase Analysis  
-- **Modularity:** The code is structured in a modular way, making it easy to update or add new features without affecting existing ones.
-- **Documentation:** Inline comments and a comprehensive code documentation are provided for easier navigation.
-- **Version Control:** The project uses Git for version control to track changes and collaborate effectively.
+## 🔧 Core Mechanics
 
-## Installation Instructions  
-1. Clone the repository:  
-   ```bash  
-   git clone https://github.com/Aerospace-prog/Knight-Runner.git  
-   ```  
-2. Navigate into the project directory:  
-   ```bash  
-   cd Knight-Runner  
-   ```  
-3. Install the required dependencies:  
-   ```bash  
-   npm install  
-   ```  
-4. Start the game:  
-   ```bash  
-   npm start  
-   ```  
+### Player Controller
+Handles movement, gravity, jumping, animation states, and sprite flipping.
 
-## Controls  
-- **Arrow Keys:** Move the knight (Up, Down, Left, Right).
-- **Space Bar:** Attack.
-- **E:** Interact with objects.
+### Enemy AI
+Raycast-based patrol system with automatic direction switching.
 
-## Game Objects  
-- **Knight:** The main character controlled by the player.
-- **Enemies:** Various types of foes with unique behaviors.
-- **Items:** Collectibles that provide power-ups or information.
+### Game Manager
+Tracks and updates score globally.
 
-## Technologies  
-- **JavaScript:** The primary programming language used for game development.
-- **HTML5/CSS3:** Used for structuring and styling the game interface.
-- **Canvas API:** Leveraged for rendering the game graphics.
-- **Node.js:** Utilized for managing the server and game logic processes.
+### Coin
+Triggers score increment and pickup animation.
 
-## Future Enhancements  
-- **Multiplayer Mode:** Introduce an online mode for player-versus-player encounters.
-- **Level Editor:** A tool for players to create and share custom levels.
-- **VR Support:** Implement virtual reality options for an immersive experience.
-- **Enhanced AI:** Improve enemy AI for more dynamic interactions and challenging combat.
+### Kill Zone
+Handles player death and scene reload.
+
+---
+
+## 🎮 Installation & Setup
+
+```bash
+git clone https://github.com/Aerospace-prog/Knight-Runner.git
+cd Knight-Runner
+```
+
+Open with Godot Engine and press **F5** to run.
+
+---
+
+## 🎮 Controls
+
+| Action | Keys |
+|------|------|
+| Move Left | A / ← |
+| Move Right | D / → |
+| Jump | Space / W |
+
+---
+
+## 🧠 Architecture & Design
+
+- Scene-based modular architecture
+- Single responsibility scripts
+- Signal-driven interactions
+- Centralized game state
+
+---
+
+## 🔍 Codebase Analysis
+
+**Strengths**
+- Clean modular code
+- Frame-rate independent physics
+- Efficient raycasting
+
+**Improvements**
+- Constants instead of magic numbers
+- Input rebinding
+- Save system
+
+---
+
+## 🎭 Game Objects
+
+| Object | Type |
+|------|------|
+| Player | CharacterBody2D |
+| Coin | Area2D |
+| Slime | Node2D |
+| Killzone | Area2D |
+
+---
+
+## 🛠 Technologies
+
+- Godot Engine 4.x
+- GDScript
+- Godot Physics
+- AnimationPlayer
+- Git
+
+---
+
+## ⚠️ Known Limitations
+
+- Single level
+- No save system
+- Limited enemy types
+
+---
+
+## 🚀 Future Enhancements
+
+- Multiple levels
+- Boss enemies
+- Power-ups
+- Menu system
+- Persistent high scores
+
+---
+
+## 📝 License
+
+Open-source for educational use.
+
+---
+
+## 🙌 Contributing
+
+Fork → Branch → PR 🚀
+
+---
+
+## 👨‍💻 Author
+
+**Aerospace-prog**
